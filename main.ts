@@ -10,7 +10,7 @@ function Upside_Down () {
         isUpsideDown = true
         scene.setBackgroundColor(5)
         mySprite.ay = -200
-        mySprite.setPosition(mySprite.x, mySprite.y + 32)
+        mySprite.setPosition(mySprite.x, mySprite.y + 100)
     }
 }
 function Normal_World () {
@@ -19,7 +19,7 @@ function Normal_World () {
         isUpsideDown = false
         scene.setBackgroundColor(3)
         mySprite.ay = 200
-        mySprite.setPosition(mySprite.x, mySprite.y - 32)
+        mySprite.setPosition(mySprite.x, mySprite.y - 100)
     }
 }
 let isUpsideDown = false
