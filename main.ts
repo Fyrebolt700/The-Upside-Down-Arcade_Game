@@ -11,7 +11,30 @@ function Upside_Down () {
         scene.setBackgroundColor(5)
         mySprite.ay = -200
         mySprite.setPosition(mySprite.x, mySprite.y + 100)
+        enemy_movement(123, 92)
     }
+}
+function enemy_movement (x: number, y: number) {
+    ENEMY = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 5 5 . . . . . . . . . 
+        . . . 5 5 5 5 5 5 . . . . . . . 
+        . . 5 5 4 4 4 4 5 5 5 5 . . . . 
+        . . 5 4 4 2 2 4 4 4 4 5 . . . . 
+        . . 5 4 2 2 2 2 2 2 4 5 5 . . . 
+        . . 5 4 2 2 2 2 2 2 4 4 5 . . . 
+        . . 5 4 2 5 2 2 5 2 2 4 5 . . . 
+        . . 5 4 2 2 2 2 2 2 2 4 5 . . . 
+        . . 5 4 2 2 2 2 2 2 2 4 5 . . . 
+        . . 5 4 2 2 2 2 2 2 2 4 5 . . . 
+        . . 5 4 2 2 2 2 2 2 2 4 5 . . . 
+        . . 5 4 2 2 2 2 2 2 2 4 5 . . . 
+        `, SpriteKind.Enemy)
+    ENEMY.setPosition(x, y)
+    mySprite.ay = -200
 }
 function Normal_World () {
     if (isUpsideDown) {
@@ -22,6 +45,10 @@ function Normal_World () {
         mySprite.setPosition(mySprite.x, mySprite.y - 100)
     }
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    game.reset()
+})
+let ENEMY: Sprite = null
 let isUpsideDown = false
 let mySprite: Sprite = null
 let mySprite_img_normal: Image = null
