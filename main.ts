@@ -20,13 +20,26 @@ function Upside_Down () {
         scene.setBackgroundColor(5)
         mySprite.ay = -200
         mySprite.setPosition(mySprite.x, mySprite.y + 100)
-        enemy_position2(7, 13)
+        enemy()
     }
 }
-function enemy_movement () {
-	
+function position (sprite: Sprite, col: number, row: number) {
+    sprite.setPosition(col * 16 + 8, row * 16 + 8)
 }
-function enemy_position2 (col: number, row: number) {
+function next_level () {
+    if (current_level == 1) {
+        current_level += 1
+        load_level_2()
+    } else if (current_level == 2) {
+        current_level += 1
+        load_level_3()
+    } else if (current_level == 3) {
+        end_screen()
+    } else {
+    	
+    }
+}
+function enemy () {
     ENEMY = sprites.create(img`
         . . 5 4 2 2 2 2 2 2 2 4 5 . . . 
         . . 5 4 2 2 2 2 2 2 2 4 5 . . . 
@@ -49,28 +62,12 @@ function enemy_position2 (col: number, row: number) {
     if (current_level == 1) {
         ENEMY.setVelocity(-20, 0)
         position(ENEMY, 7, 13)
-    }
-    if (current_level == 2) {
-        ENEMY.setVelocity(-20, 0)
-        position(ENEMY, 7, 13)
-    }
-    if (current_level == 3) {
-        ENEMY.setVelocity(-20, 0)
-        position(ENEMY, 7, 13)
-    }
-}
-function position (sprite: Sprite, col: number, row: number) {
-    sprite.setPosition(col * 16 + 8, row * 16 + 8)
-}
-function next_level () {
-    if (current_level == 1) {
-        current_level += 1
-        load_level_2()
     } else if (current_level == 2) {
-        current_level += 1
-        load_level_3()
+        ENEMY.setVelocity(-20, 0)
+        position(ENEMY, 7, 13)
     } else if (current_level == 3) {
-        end_screen()
+        ENEMY.setVelocity(-20, 0)
+        position(ENEMY, 7, 13)
     } else {
     	
     }
@@ -158,7 +155,7 @@ function load_level_3 () {
     mySprite.ay = 200
     controller.moveSprite(mySprite, 100, 0)
     scene.cameraFollowSprite(mySprite)
-    Normal_World()
+    isUpsideDown = false
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
     next_level()
@@ -228,7 +225,7 @@ function load_level_2 () {
     mySprite.ay = 200
     controller.moveSprite(mySprite, 100, 0)
     scene.cameraFollowSprite(mySprite)
-    Normal_World()
+    isUpsideDown = false
 }
 function reset_level () {
     if (current_level == 1) {
@@ -306,7 +303,7 @@ function load_level_1 () {
     mySprite.ay = 200
     controller.moveSprite(mySprite, 100, 0)
     scene.cameraFollowSprite(mySprite)
-    Normal_World()
+    isUpsideDown = false
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     reset_level()
