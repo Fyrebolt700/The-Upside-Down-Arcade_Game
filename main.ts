@@ -40,6 +40,14 @@ function enemy_movement (col: number, row: number) {
 function position (sprite: Sprite, col: number, row: number) {
     sprite.setPosition(col * 16 + 8, row * 16 + 8)
 }
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (isUpsideDown && freeze_counter == 0) {
+        freeze_counter += 1
+        ENEMY.setVelocity(0, 0)
+        pause(1000)
+        ENEMY.setVelocity(-30, 0)
+    }
+})
 function Normal_World () {
     if (isUpsideDown) {
         sprites.destroy(ENEMY)
@@ -58,6 +66,8 @@ let isUpsideDown = false
 let mySprite: Sprite = null
 let mySprite_img_normal: Image = null
 let mySprite_img_upside_down: Image = null
+let freeze_counter = 0
+freeze_counter = 0
 mySprite_img_upside_down = img`
     . . . . f f f f f f f . . . . . 
     . . . . f f f f f f f . . . . . 
