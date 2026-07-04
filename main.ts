@@ -4,6 +4,7 @@ namespace SpriteKind {
 function end_screen () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+    sprites.destroyAllSpritesOfKind(SpriteKind.goal)
     tiles.setCurrentTilemap(tilemap`level6`)
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -65,13 +66,13 @@ function next_level () {
     if (current_level == 1) {
         current_level += 1
         load_level_2()
-    }
-    if (current_level == 2) {
+    } else if (current_level == 2) {
         current_level += 1
         load_level_3()
-    }
-    if (current_level == 3) {
+    } else if (current_level == 3) {
         end_screen()
+    } else {
+    	
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -159,6 +160,9 @@ function load_level_3 () {
     scene.cameraFollowSprite(mySprite)
     Normal_World()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
+    next_level()
+})
 function load_level_2 () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
@@ -311,8 +315,8 @@ let mySprite_img_normal: Image = null
 let freeze_counter = 0
 let ENEMY: Sprite = null
 let mySprite_img_upside_down: Image = null
-let isUpsideDown = false
 let mySprite: Sprite = null
+let isUpsideDown = false
 let current_level = 0
 let goalpost: Sprite = null
 goalpost = sprites.create(img`
@@ -336,6 +340,3 @@ goalpost = sprites.create(img`
     `, SpriteKind.goal)
 current_level = 1
 load_level_1()
-if (mySprite.overlapsWith(goalpost)) {
-    next_level()
-}
