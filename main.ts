@@ -1,13 +1,37 @@
 namespace SpriteKind {
     export const goal = SpriteKind.create()
 }
+/**
+ * Add upside down player sprite (just flip the drawing. theres a button for it)
+ */
+/**
+ * Add player sprite
+ */
+/**
+ * Add level 1 tilemap
+ */
+/**
+ * Add instructions for how to play the game
+ */
+/**
+ * add end screen text
+ */
+/**
+ * Add enemy sprite
+ */
+/**
+ * Add level 3 tilemap
+ */
+/**
+ * Add level 2 tilemap
+ */
 function reset_level () {
     if (current_level == 1) {
-        load_level_2()
+        load_level_1()
     } else if (current_level == 2) {
-        load_level_3()
+        load_level_2()
     } else if (current_level == 3) {
-        end_screen()
+        load_level_3()
     } else {
     	
     }
@@ -85,7 +109,7 @@ function load_level_1 () {
         . . . . f f f f f f f . . . . . 
         . . . . f f f f f f f . . . . . 
         `
-    tiles.setCurrentTilemap(tilemap`level6`)
+    tiles.setCurrentTilemap(tilemap`level0`)
     scene.setBackgroundColor(3)
     mySprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -118,13 +142,15 @@ function load_level_1 () {
         game.showLongText("step 4 go to normal world", DialogLayout.Top)
     }
     isUpsideDown = false
+    intro = false
 }
 // Add end screen tilemap.
 function end_screen () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     sprites.destroyAllSpritesOfKind(SpriteKind.goal)
-    tiles.setCurrentTilemap(tilemap`level6`)
+    tiles.setCurrentTilemap(tilemap`endscreen`)
+    game.showLongText("congrats u survived", DialogLayout.Top)
 }
 // Add enemy sprite. (lmk if u want more than one type of enemy)
 function enemy () {
@@ -219,32 +245,8 @@ function load_level_3 () {
         . . . . f f f f f f f . . . . . 
         . . . . f f f f f f f . . . . . 
         `
-    tiles.setCurrentTilemap(tilemap`level7`)
+    tiles.setCurrentTilemap(tilemap`level12`)
     scene.setBackgroundColor(3)
-    mySprite = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f . . . . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . f 1 f f 1 f f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        `, SpriteKind.Player)
-    position(mySprite, 0, 4)
-    position(goalpost, 15, 4)
-    mySprite.ay = 200
-    controller.moveSprite(mySprite, 100, 0)
-    scene.cameraFollowSprite(mySprite)
-    isUpsideDown = false
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
     next_level()
@@ -290,7 +292,7 @@ function load_level_2 () {
         . . . . f f f f f f f . . . . . 
         . . . . f f f f f f f . . . . . 
         `
-    tiles.setCurrentTilemap(tilemap`level8`)
+    tiles.setCurrentTilemap(tilemap`level10`)
     scene.setBackgroundColor(3)
     mySprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
