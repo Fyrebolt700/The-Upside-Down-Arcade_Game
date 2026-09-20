@@ -1,26 +1,34 @@
- 
+# The Upside Down Arcade Game
 
+A physical-platformer game built with **MakeCode Arcade** and a **Circuit Playground Express**.
 
-> Open this page at [https://fyrebolt700.github.io/the-upside-down-arcade_game/](https://fyrebolt700.github.io/the-upside-down-arcade_game/)
+The player navigates three levels while switching between the normal world and the **Upside Down** to overcome obstacles and reach the goal.
 
-## Use as Extension
+## Features
 
-This repository can be added as an **extension** in MakeCode.
+* 3 playable levels
+* Normal / Upside Down world switching
+* Enemies and hazards
+* Custom tilemaps and artwork
+* Physical controller input using Circuit Playground Express
+* Level progression and restart logic
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/fyrebolt700/the-upside-down-arcade_game** and import
+## Controls
 
-## Edit this project
+* **A** — Enter the Upside Down
+* **B** — Return to the normal world
+* **Down** — Freeze enemies
 
-To edit this repository in MakeCode.
+## Built With
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/fyrebolt700/the-upside-down-arcade_game** and click import
+* MakeCode Arcade
+* TypeScript
+* Circuit Playground Express
 
-#### Metadata (used for search, rendering)
+## Demo
 
-* for PXT/arcade
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+[Add gameplay GIF/video here]
+
+## What I Built
+
+Designed and implemented the game mechanics, level logic, custom visuals, controls, and physical interaction between the Circuit Playground Express and the game.
