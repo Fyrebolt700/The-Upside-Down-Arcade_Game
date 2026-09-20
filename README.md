@@ -4,12 +4,24 @@ A physical-platformer game built with **MakeCode Arcade** and a **Circuit Playgr
 
 The player navigates three levels while switching between the normal world and the **Upside Down** to overcome obstacles and reach the goal.
 
+## Physical Setup
+
+![Physical Circuit Playground Express controller](physical-setup.jpg)
+
+Physical Circuit Playground Express controller during the final stage of gameplay.
+
+## Gameplay
+
+![Gameplay](gameplay.png)
+
+Three-level platformer featuring world switching, enemies, hazards, and level progression.
+
 ## Features
 
 * 3 playable levels
 * Normal / Upside Down world switching
 * Enemies and hazards
-* Custom tilemaps and artwork
+* Custom tilemaps and game logic
 * Physical controller input using Circuit Playground Express
 * Level progression and restart logic
 
@@ -25,10 +37,6 @@ The player navigates three levels while switching between the normal world and t
 * TypeScript
 * Circuit Playground Express
 
-## Demo
-
-[Add gameplay GIF/video here]
-
 ## What I Built
 
-Designed and implemented the game mechanics, level logic, custom visuals, controls, and physical interaction between the Circuit Playground Express and the game.
+Designed and implemented the game mechanics, level logic, controls, physical controller interaction, and level progression.
