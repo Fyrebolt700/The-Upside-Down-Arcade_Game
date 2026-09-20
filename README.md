@@ -6,7 +6,7 @@ The player navigates three levels while switching between the normal world and t
 
 ## Physical Setup
 
-![Physical Circuit Playground Express controller](physical-setup.jpg)
+<img src="physical-setup.jpg" alt="Physical Circuit Playground Express controller" width="400">
 
 Physical Circuit Playground Express controller during the final stage of gameplay.
 
